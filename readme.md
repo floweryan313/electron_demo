@@ -1,4 +1,4 @@
-# ![electron](https://www.electronjs.org/assets/img/logo.svg){:height="3%" width="3%"} Electron
+# Electron
 ## _The Last Markdown Editor, floweryan313
 
 
