@@ -1,8 +1,11 @@
 {
   "name": "electron_demo",
-  "version": "v1.0.0",
+  "version": "1.0.2",
   "main": "index.js",
-  "repository": "https://github.com/floweryan313/electron_demo.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/floweryan313/electron_demo.git"
+  },
   "author": "floweryan313 <floweryan313@gmail.com>",
   "license": "MIT",
   "scripts": {
@@ -14,5 +17,14 @@
     "electron": "^26.4.0",
     "electron-builder": "^24.6.4"
   },
-  "dependencies": {}
+  "description": "[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://www.electronjs.org/docs/latest/tutorial/quick-start )",
+  "bugs": {
+    "url": "https://github.com/floweryan313/electron_demo/issues"
+  },
+  "homepage": "https://github.com/floweryan313/electron_demo#readme",
+  "dependencies": {
+    "electron-log": "^4.4.8",
+    "electron-updater": "^6.1.4",
+    "update-electron-app": "^2.0.1"
+  }
 }

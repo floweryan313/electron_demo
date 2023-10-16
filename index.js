@@ -1,8 +1,19 @@
 // index.js
 
 // Modules to control application life and create native browser window
-const { app, BrowserWindow } = require('electron')
+const { app, autoUpdater ,dialog,BrowserWindow} = require('electron')
 const path = require('node:path')
+require('update-electron-app')()
+const server = 'http://http://175.27.245.116:8085'
+const feed = `${server}/update/`
+console.log(feed)
+
+setInterval(() => {
+  autoUpdater.checkForUpdates()
+}, 10 * 60 * 1000)
+
+autoUpdater.setFeedURL(feed)
+
 
 const createWindow = () => {
   // Create the browser window.
@@ -43,3 +54,21 @@ app.on('window-all-closed', () => {
 
 // 在当前文件中你可以引入所有的主进程代码
 // 也可以拆分成几个文件，然后用 require 导入。
+autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
+  const dialogOpts = {
+    type: 'info',
+    buttons: ['Restart', 'Later'],
+    title: 'Application Update',
+    message: process.platform === 'win32' ? releaseNotes : releaseName,
+    detail: 'A new version has been downloaded. Restart the application to apply the updates.'
+  }
+
+  dialog.showMessageBox(dialogOpts).then((returnValue) => {
+    if (returnValue.response === 0) autoUpdater.quitAndInstall()
+  })
+})
+
+autoUpdater.on('error', message => {
+  console.error('There was a problem updating the application')
+  console.error(message)
+})
