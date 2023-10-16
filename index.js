@@ -4,8 +4,8 @@
 const { app, autoUpdater ,dialog,BrowserWindow} = require('electron')
 const path = require('node:path')
 require('update-electron-app')()
-const server = 'http://http://175.27.245.116:8085'
-const feed = `${server}/update/${app.getVersion()}`
+const server = 'http:///175.27.245.116:8085'
+const feed = `${server}/update/${process.platform}/${app.getVersion()}`
 console.log(feed)
 
 setInterval(() => {
